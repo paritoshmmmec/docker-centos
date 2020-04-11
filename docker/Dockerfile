@@ -14,7 +14,6 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364
 	&& gosu nobody true
 
 
-
 RUN yum -y install epel-release \
 	&& yum -y update \
 	&& yum -y install pwgen wget logrotate python \
@@ -23,7 +22,8 @@ RUN yum -y install epel-release \
 
 RUN wget https://packages.erlang-solutions.com/erlang-solutions-2.0-1.noarch.rpm \
 	&& rpm -Uvh erlang-solutions-2.0-1.noarch.rpm \
-	&& yum -y install erlang socat
+	&& yum -y install erlang socat \
+	&& yum clean all 
 
 
 # Default to a PGP keyserver that pgp-happy-eyeballs recognizes, but allow for substitutions locally
